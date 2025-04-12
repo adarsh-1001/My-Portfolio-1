@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adarsh Mishra | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- For Icons -->
+  <style>
+    :root {
+      --accent: #00b4d8;
+      --highlight: #ff66c4;
+      --light: #e0e1dd;
+      --dark: #0d1b2a;
+      --card-bg: rgba(27, 38, 59, 0.7);
+      --font-main: 'Montserrat', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header, section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Background animation for robotics theme */
+    .bg-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/robot-arm.png') repeat;
+      opacity: 0.1;
+      animation: moveBackground 5s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes moveBackground {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(50px, 50px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* Name fade-in animation */
+    h1 {
+      font-size: 3rem;
+      color: var(--highlight);
+      opacity: 0;
+      animation: fadeIn 3s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .btn {
+      background: var(--card-bg);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px auto;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border: 2px solid transparent; /* Initial border */
+      animation: slowBorderBlink 3s ease-in-out infinite;
+    }
+
+    @keyframes slowBorderBlink {
+      0%, 50%, 100% {
+        border-color: transparent;
+      }
+      25%, 75% {
+        border-color: var(--highlight);
+      }
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .about-section {
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-size: 1.2rem;
+      color: var(--light);
+    }
+
+    .about-header {
+      font-size: 2.5rem;
+      color: var(--highlight);
+    }
+
+    .about-content {
+      font-size: 1.1rem;
+      color: #f1f1f1;
+    }
+
+    .skills, .projects, .blog, .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .skill, .project-card, .blog-card, .service-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid var(--highlight); /* Initial border */
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      max-width: 300px;
+      animation: slowBorderBlink 3s ease-in-out infinite;
+    }
+
+    footer {
+      background: #111;
+      color: #aaa;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+    }
+
+    /* Navigation Bar */
+    nav {
+      background: var(--dark);
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      padding: 10px 0;
+      z-index: 100;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      list-style: none;
+    }
+
+    nav ul li {
+      font-size: 1.1rem;
+    }
+
+    nav ul li a {
+      color: #ff66c4;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      text-transform: uppercase;
+      animation: slowBlink 3s ease-in-out infinite;
+    }
+
+    @keyframes slowBlink {
+      0%, 50%, 100% {
+        opacity: 1;
+      }
+      25%, 75% {
+        opacity: 0;
+      }
+    }
+
+    .robot-icon {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .robot-icon:hover {
+      transform: rotate(360deg);
+    }
+
+    /* Adding subtle background shade for CV and Name (like "About Me") */
+    .btn, h1 {
+      background: rgba(27, 38, 59, 0.7); /* Subtle shade */
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg-animation"></div> <!-- Robotics Background Animation -->
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Hi, I'm <span class="highlight">Adarsh Mishra</span></h1>
+    <p>Web Developer | Designer | Learner</p>
+    <a href="https://drive.google.com/file/d/16ROZri1wgMYxfmWouYRdujEdRMqr45_c/view?usp=drivesdk" download class="btn">📄 Download CV</a>
+    <i class="fas fa-robot robot-icon"></i> <!-- Robotics Icon -->
+  </header>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-section card">
+      <h3 class="about-header">Who Am I?</h3>
+      <p class="about-content">I’m a final-year B.Tech Computer Science Engineering student with a strong passion for full-stack web development and software engineering. I enjoy building scalable, high-performance web applications that deliver real value to users.</p>
+      <p class="about-content">Technically skilled in Python (NumPy, Pandas), Java, HTML, CSS, JavaScript, React.js, and Node.js. I also have a solid foundation in Data Structures, Algorithms, and Object-Oriented Programming.</p>
+      <p class="about-content">I’m a quick learner, a team player, and always eager to explore new technologies and take on real-world challenges to sharpen my development skills.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills card">
+      <div class="skill">C</div>
+      <div class="skill">C++</div>
+      <div class="skill">Python</div>
+      <div class="skill">NumPy / Pandas</div>
+      <div class="skill">Java</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React.js</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">MongoDB</div>
+      <div class="skill">HTML / CSS</div>
+      <div class="skill">Git & GitHub</div>
+      <div class="skill">DSA (Data Structures & Algorithms)</div>
+      <div class="skill">OOPs</div>
+      <div class="skill">Problem Solving</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects card">
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A personal website to showcase my resume, skills, and major projects. Built using HTML, CSS, and JavaScript with animations.</p>
+      </div>
+      <div class="project-card">
+        <h3>Skin Disease Prediction System (ML)</h3>
+        <p>A machine learning web app that predicts skin diseases using image input. Built with Python, ML models, and a responsive UI.</p>
+      </div>
+      <div class="project-card">
+        <h3>To-Do App</h3>
+        <p>A minimal to-do list app to manage daily tasks with add, delete, and drag-drop functionality. Built using JavaScript.</p>
+      </div>
+      <div class="project-card">
+        <h3>Blog Website</h3>
+        <p>A full-stack CMS-based blog platform with user login, posting, editing, and admin features using Node.js and MongoDB.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2 class="section-title">Blog</h2>
+    <div class="blog card">
+      <div class="blog-card">
+        <h3>Why Responsive Design Matters</h3>
+        <p>Understand the need for mobile-first web design and how it improves user experience in all screen sizes.</p>
+        <a href="#" class="btn">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>5 JavaScript Tricks You Should Know</h3>
+        <p>Boost your JS coding with useful tricks like debouncing, event delegation, and more.</p>
+        <a href="#" class="btn">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>How I Built My Portfolio</h3>
+        <p>A behind-the-scenes look at how I designed and built my portfolio website using HTML, CSS & JS.</p>
+        <a href="#" class="btn">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">Services</h2>
+    <div class="services card">
+      <div class="service-card">
+        <h3>Web Development</h3>
+        <p>Full-stack website development using MERN stack.</p>
+      </div>
+      <div class="service-card">
+        <h3>UI/UX Design</h3>
+        <p>Designing clean and modern user interfaces with Figma and CSS.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="card contact-info">
+      <p><strong>Email:</strong> <a href="mailto:mishraadarsh1001@gmail.com">mishraadarsh1001@gmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+916307737501">+91-6307737501</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/adarsh-mishra-7july2003" target="_blank">linkedin.com/in/adarsh-mishra-7july2003</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/adarsh-1001" target="_blank">github.com/adarsh-1001</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Made by Adarsh Mishra &copy; 2025</p>
+  </footer>
+
+</body>
+</html>
